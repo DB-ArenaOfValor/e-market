@@ -70,3 +70,31 @@ Return:
 ```
 
 ```
+
+##2. All kinds of delete
+
+**POST update_product.php**
+**POST update_user.php**
+**POST update_order.php**
+**POST update_order-detail.php**
+**POST update_rating.php**
+**POST update_cart.php**
+
+Params(form data)(product example):
+
+`PID`
+`model`
+`brand`
+`color`
+`price`
+`use_time`
+`state`
+`sellerID`
+`image`
+`sell_time`
+
+Return:
+
+```
+
+```
