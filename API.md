@@ -71,7 +71,7 @@ Return:
 
 ```
 
-##2. All kinds of delete
+##3. All kinds of update
 
 **POST update_product.php**
 **POST update_user.php**
@@ -97,4 +97,48 @@ Return:
 
 ```
 
+```
+
+##4. All kinds of create
+
+**POST add_product.php**
+**POST add_user.php**
+**POST add_order.php**
+**POST add_order-detail.php**
+**POST add_rating.php**
+**POST add_cart.php**
+
+Params(form data)(product example):
+
+`PID`
+`model`
+`brand`
+`color`
+`price`
+`use_time`
+`state`
+`sellerID`
+`image`
+`sell_time`
+
+Return:
+
+```
+[
+    success: true,
+    data:               // the added item
+    {
+        "PID":"00001",
+        "brand": "Apple",
+        "model": "iPhone X",
+        "year": "2017-10-01",
+        "color": "grey",
+        "use_time": "0.2",
+        "price": "892.08",
+        "state": "0",
+        "image": "2",
+        "sell_time": "2015-08-31 13 : 05 : 28",
+        "sellerID": "00002"
+    }
+]
 ```
