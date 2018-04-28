@@ -59,6 +59,8 @@ function fillTable(array) {
 // add filter for each attribute
 function fillFilter(keys) {
     var filter = document.querySelector(".filter");
+    filter.innerHTML = "";
+
     for (var i in keys) {
         filter.innerHTML +=
             "<div class='catagory'><div class='title'>" +
