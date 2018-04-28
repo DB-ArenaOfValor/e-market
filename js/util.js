@@ -44,3 +44,26 @@ function displayFormData(formData) {
         console.log(pair[0] + ", " + pair[1]);
     }
 }
+
+// get the key/value pair in the row containing the cell
+// and return as formdata
+function getRow(cell) {
+    // get keys from table head
+    var ths = Array.from(document.querySelectorAll("th div"));
+    var keys = ths.map(v => v.innerHTML);
+
+    // get values from the row
+    var tds = Array.from(cell.parentNode.childNodes).slice(
+        0,
+        this.length - 1 // remove the last "delete cell"
+    );
+    var values = tds.map(v => v.innerHTML);
+
+    // construct formData
+    var formData = new FormData();
+    keys.map((v, i) => {
+        formData.append(v, values[i]);
+    });
+    displayFormData(formData);
+    return formData;
+}
