@@ -98,5 +98,10 @@ function deleteItem(e) {
     displayFormData(formData);
 
     // post php
-    ajax("POST", "delete_" + selectedTab + ".php", formData);
+    ajax(
+        "POST",
+        "delete_" + selectedTab + ".php",
+        formData,
+        () => e.target.parentNode.remove() // remove clicked row
+    );
 }
