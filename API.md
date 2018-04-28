@@ -1,17 +1,25 @@
-##1. find products
+##1. All kinds of read (select)
 
 **POST find_product.php**
+**POST find_user.php**
+**POST find_order.php**
+**POST find_order-detail.php**
+**POST find_rating.php**
+**POST find_cart.php**
 
-Params(form data):
+Params(form data)(product example):
 
+`PID`
 `model`
-`brand` may be multiple
-`color` may be multiple
-`min-price`
-`max-price`
-`use_time` possible value: "0-1", "1-3", "3-infinity"
-`state` possible value: 0, 1
-`userID` sellerID
+`brand`
+`color`
+`price`
+`use_time`
+`state`
+`sellerID`
+`image`
+`sell_time`
+`userName`
 
 Return:
 
@@ -36,22 +44,93 @@ Return:
 ]
 ```
 
-##2. add product
-**POST add_product.php**
+##2. All kinds of delete
 
-Params(form data):
+**POST delete_product.php**
+**POST delete_user.php**
+**POST delete_order.php**
+**POST delete_order-detail.php**
+**POST delete_rating.php**
+**POST delete_cart.php**
 
+Params(form data)(product example):
+
+`PID`
 `model`
-`brand` may be multiple
-`color` may be multiple
+`brand`
+`color`
 `price`
-`use_time` possible value: "0-1", "1-3", "3-infinity"
-`userID` sellerID
+`use_time`
+`state`
+`sellerID`
+`image`
+`sell_time`
+`userName`
+
+Return:
+
+```
+
+```
+
+##3. All kinds of update
+
+**POST update_product.php**
+**POST update_user.php**
+**POST update_order.php**
+**POST update_order-detail.php**
+**POST update_rating.php**
+**POST update_cart.php**
+
+Params(form data)(product example):
+
+`PID`
+`model`
+`brand`
+`color`
+`price`
+`use_time`
+`state`
+`sellerID`
+`image`
+`sell_time`
+`userName`
+
+Return:
+
+```
+
+```
+
+##4. All kinds of create
+
+**POST add_product.php**
+**POST add_user.php**
+**POST add_order.php**
+**POST add_order-detail.php**
+**POST add_rating.php**
+**POST add_cart.php**
+
+Params(form data)(product example):
+
+`PID`
+`model`
+`brand`
+`color`
+`price`
+`use_time`
+`state`
+`sellerID`
+`image`
+`sell_time`
+`userName`
 
 Return:
 
 ```
 [
+    success: true,
+    data:               // the added item
     {
         "PID":"00001",
         "brand": "Apple",
@@ -64,9 +143,6 @@ Return:
         "image": "2",
         "sell_time": "2015-08-31 13 : 05 : 28",
         "sellerID": "00002"
-    },
-    {
-       ......//same
     }
 ]
 ```
