@@ -401,6 +401,7 @@ table tr:nth-child(even) {
 
 table tr:first-child {
     border-bottom: solid 2px #000;
+    background-color: rgba(247, 115, 113, 0.2);
 }
 
 td.add:hover {
