@@ -19,6 +19,7 @@ Params(form data)(product example):
 `sellerID`
 `image`
 `sell_time`
+`userName`
 
 Return:
 
@@ -64,6 +65,7 @@ Params(form data)(product example):
 `sellerID`
 `image`
 `sell_time`
+`userName`
 
 Return:
 
@@ -92,6 +94,7 @@ Params(form data)(product example):
 `sellerID`
 `image`
 `sell_time`
+`userName`
 
 Return:
 
@@ -120,6 +123,7 @@ Params(form data)(product example):
 `sellerID`
 `image`
 `sell_time`
+`userName`
 
 Return:
 
