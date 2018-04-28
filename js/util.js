@@ -88,7 +88,15 @@ function fillTable(array) {
 
     //add table content
     var tbody = document.querySelector("tbody");
-    tbody.innerHTML = "";
+    tbody.innerHTML = ""; // clear table
+
+    // new row to add item
+    var newRow = document.createElement("tr");
+    for (var index in keys)
+        newRow.innerHTML += "<td contenteditable='true'></td>"; // blank cell
+    newRow.innerHTML += "<td class='add' onclick='addItem(event)'>Add</td>"; // add cell
+    tbody.appendChild(newRow);
+
     for (var i = 0; array && i < array.length; i++) {
         var a = array[i];
         var row = document.createElement("tr");
@@ -99,7 +107,7 @@ function fillTable(array) {
                 a[k] +
                 "</td>";
         }
-        row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>";
+        row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>"; // delete cell
         tbody.appendChild(row);
     }
     return keys;
@@ -117,5 +125,38 @@ function fillFilter(keys) {
             "</div><input  name='" +
             keys[i] +
             "' type='text'></div>";
+    }
+}
+
+// failure: alert
+// success: alert, clear add row and add a row in the current table
+function addCallback(result) {
+    //failure
+    if (!result.success) {
+        alert("Error!");
+        return;
+    }
+
+    //success
+    alert("Item added successfully!");
+    //clear the add row
+    clearAddRow();
+    // add a new row in the current table
+    var row = document.createElement("tr");
+    for (var key in result.data) {
+        row.innerHTML +=
+            "<td onblur='updataItem(event)' contenteditable='true'>" +
+            result.data[key] +
+            "</td>";
+    }
+    row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>"; // delete cell
+    document.querySelector("tbody").appendChild(row);
+}
+
+// clear the add row after successfully adding an item
+function clearAddRow() {
+    var tds = document.querySelector("td.add").parentNode.childNodes;
+    for (var i = 0; i < tds.length - 1; i++) {
+        tds[i].innerHTML = "";
     }
 }
