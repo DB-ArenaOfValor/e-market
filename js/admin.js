@@ -49,9 +49,12 @@ function fillTable(array) {
         var row = document.createElement("tr");
         for (var j in keys) {
             var k = keys[j];
-            row.innerHTML += "<td contenteditable='true'>" + a[k] + "</td>";
+            row.innerHTML +=
+                "<td onkeydown='' onblur='updataItem(event)' contenteditable='true'>" +
+                a[k] +
+                "</td>";
         }
-        row.innerHTML += "<td onclick='deleteItem(event)''>&#9003;</td>";
+        row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>";
         tbody.appendChild(row);
     }
     return keys;
@@ -75,33 +78,21 @@ function fillFilter(keys) {
 // submit filter when form is changed and change table
 function submitFilter() {
     var formData = new FormData(document.querySelector("form.filter"));
+    displayFormData(formData);
     ajax("POST", "find_" + selectedTab + ".php", formData, fillTable);
 }
 
+// delete an item
 function deleteItem(e) {
-    // get keys
-    var ths = Array.from(document.querySelectorAll("th div"));
-    var keys = ths.map(v => v.innerHTML);
-
-    // get value
-    var tds = Array.from(e.target.parentNode.childNodes).slice(
-        0,
-        this.length - 1
-    );
-    var values = tds.map(v => v.innerHTML);
-
-    // construct formData
-    var formData = new FormData();
-    keys.map((v, i) => {
-        formData.append(v, values[i]);
-    });
-    displayFormData(formData);
-
-    // post php
     ajax(
         "POST",
         "delete_" + selectedTab + ".php",
-        formData,
+        getRow(e.target),
         () => e.target.parentNode.remove() // remove clicked row
     );
+}
+
+// update an item
+function updataItem(e) {
+    ajax("POST", "update_" + selectedTab + ".php", getRow(e.target));
 }
