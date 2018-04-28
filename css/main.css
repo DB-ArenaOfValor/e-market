@@ -387,13 +387,14 @@ table td {
     padding: 5px;
 }
 
-table td:last-child::after {
+/* table td:last-child::after {
     content: '\232B';
     color: #000;
     float: right;
     margin-right: 5px;
     cursor: pointer;
-}
+    pointer-events: all;
+} */
 
 table tr:nth-child(even) {
     background: #ddd;

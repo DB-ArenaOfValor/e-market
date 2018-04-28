@@ -51,6 +51,7 @@ function fillTable(array) {
             var k = keys[j];
             row.innerHTML += "<td contenteditable='true'>" + a[k] + "</td>";
         }
+        row.innerHTML += "<td onclick='deleteItem(event)''>&#9003;</td>";
         tbody.appendChild(row);
     }
     return keys;
@@ -75,4 +76,27 @@ function fillFilter(keys) {
 function submitFilter() {
     var formData = new FormData(document.querySelector("form.filter"));
     ajax("POST", "find_" + selectedTab + ".php", formData, fillTable);
+}
+
+function deleteItem(e) {
+    // get keys
+    var ths = Array.from(document.querySelectorAll("th div"));
+    var keys = ths.map(v => v.innerHTML);
+
+    // get value
+    var tds = Array.from(e.target.parentNode.childNodes).slice(
+        0,
+        this.length - 1
+    );
+    var values = tds.map(v => v.innerHTML);
+
+    // construct formData
+    var formData = new FormData();
+    keys.map((v, i) => {
+        formData.append(v, values[i]);
+    });
+    displayFormData(formData);
+
+    // post php
+    ajax("POST", "delete_" + selectedTab + ".php", formData);
 }

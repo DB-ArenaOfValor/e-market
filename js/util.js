@@ -37,3 +37,10 @@ function toggleSelected(tab) {
     document.querySelector("." + tab).classList.toggle("selected");
     selectedTab = tab;
 }
+
+function displayFormData(formData) {
+    // Display the key/value pairs
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+    }
+}
