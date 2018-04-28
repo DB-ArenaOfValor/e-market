@@ -1,236 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="dempapp">
+<html lang="en">
     <head>
-        <title>hello world</title>
+        <title>Welcome</title>
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
         <div class="left">
             <div class="logo"></div>
-            <div class="user">
+            <div class="avatar">
                 <span class="helper"></span><img src="img/user.png"/>
             </div>
-            <div class="shopping selected"></div>
-            <div class="orders"></div>
-            <div class="posts"></div>
-            <div class="ratings"></div>
-            <div class="order-detail"></div>
-            <div class="users"></div>
-            <div class="carts"></div>
+            <div class='product selected' onclick="load('product')"></div>
+            <!-- <div class='user' onclick="load('user')"></div> -->
+            <div class='order' onclick="load('order')"></div>
+            <div class='order-detail' onclick="load('order-detail')"></div>
+            <div class='rating' onclick="load('rating')"></div>
+            <div class='cart' onclick="load('cart')"></div>
         </div>
         <div class="main">
             <div class="top">
-                <div class="search">
-                    <span><img src="img/search.png"></span>
-                    <input type="text" name="search"/>
-                </div>
+                <div class="label">FILTER</div>
             </div>
             <div class="middle">
-                <div class="filter">
-                    <div class="catagory">
-                        <div class="title">Price</div>
-                        <div class="filter-input">
-                            $<input type="text" name="min-price"/>
-                            - $<input type="text" name="max-price"/>
-                        </div>
-                    </div>
-                    <div class="catagory">
-                        <div class="title">Brand</div>
-                        <div class="option">
-                            <label>
-                                <input type="checkbox"/>
-                                Apple
-                            </label>
-                            <label>
-                                <input type="checkbox"/>
-                                Dell
-                            </label>
-                            <label>
-                                <input type="checkbox"/>
-                                Lenovo
-                            </label>
-                            <label>
-                                <input type="checkbox"/>
-                                HP
-                            </label>
-                        </div>
-                    </div>
-                    <div class="catagory">
-                        <div class="title">color</div>
-                        <div class="option">
-                            <label><input type="checkbox" id="green" name="color" value="green">
-                                <input type="checkbox" id="blue" name="color" value="blue">
-                                <input type="checkbox" id="yellow" name="color" value="yellow">
-                                <input type="checkbox" id="red" name="color" value="red"></label>
-                        </div>
-                    </div>
-                    <div class="catagory">
-                        <div class="title">Used time</div>
-                        <div class="option">
-                            <label>
-                                <input type="radio" name="example"/>
-                                &lt; 1 year
-                            </label>
-                            <label>
-                                <input type="radio" name="example"/>
-                                1 year - 3 years
-                            </label>
-                            <label>
-                                <input type="radio" name="example"/>
-                                &gt; 3years
-                            </label>
-                        </div>
-                    </div>
-                    <div class="catagory">
-                        <div class="title">Used time</div>
-                        <div class="option">
-                            <label>
-                                <input type="radio" name="example"/>
-                                &lt; 1 year
-                            </label>
-                            <label>
-                                <input type="radio" name="example"/>
-                                1 year - 3 years
-                            </label>
-                            <label>
-                                <input type="radio" name="example"/>
-                                &gt; 3years
-                            </label>
-                        </div>
-                    </div>
-                    <div class="catagory">
-                        <div class="title">Used time</div>
-                        <div class="option">
-                            <label>
-                                <input type="radio" name="example"/>
-                                &lt; 1 year
-                            </label>
-                            <label>
-                                <input type="radio" name="example"/>
-                                1 year - 3 years
-                            </label>
-                            <label>
-                                <input type="radio" name="example"/>
-                                &gt; 3 years
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <form class="filter" onchange="submitFilter()"></form>
             </div>
         </div>
         <div class="right">
-            <div class="container">
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
+            <section>
+                <div class="container">
+                    <table>
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <ul>
-                        <li class="title">
-                            Laptop Intel Core 2 in 1 Tablet 10.1" Screen Quad Processor 32GB Keyboard Pink
-                        </li>
-                        <li class="price">$300</li>
-                        <li class="new">50% New</li>
-                    </ul>
-                </div>
-            </div>
+            </section>
         </div>
-        <div class="cart"></div>
     </body>
-    <script src="src/js/main.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/user.js"></script>
 </html>
