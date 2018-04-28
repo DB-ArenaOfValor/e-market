@@ -9,12 +9,12 @@ window.onload = function() {
 function load(tab) {
     toggleSelected(tab);
     ajax("POST", "find_" + tab + ".php", new FormData(), fill);
-    //////////////////////////////// for test
-    fill(
-        JSON.parse(
-            '[{"PID": "00000001","state":"0","brand": "Blueberry","model": "iPhone X","year": "2017-11-03","color": "navy red","use_time": "0.2","price": "832.14","image": "1"},{"PID": "00000002","brand": "Sony","model": "iPhone X","year": "2017-11-03","color": "black","use_time": "0.2","price": "832.14","image": "1"}]'
-        )
-    );
+    // //////////////////////////////// for test
+    // fill(
+    //     JSON.parse(
+    //         '[{"PID": "00000001","state":"0","brand": "Blueberry","model": "iPhone X","year": "2017-11-03","color": "navy red","use_time": "0.2","price": "832.14","image": "1"},{"PID": "00000002","brand": "Sony","model": "iPhone X","year": "2017-11-03","color": "black","use_time": "0.2","price": "832.14","image": "1"}]'
+    //     )
+    // );
 }
 
 // fill table and filter
