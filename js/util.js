@@ -67,3 +67,55 @@ function getRow(cell) {
     displayFormData(formData);
     return formData;
 }
+
+// add table row for each item in the result
+function fillTable(array) {
+    // add table header
+    var thead = document.querySelector("thead");
+    thead.innerHTML = "";
+
+    var item = array[0];
+    var keys = [];
+    for (var key in item) {
+        keys.push(key);
+
+        var div = document.createElement("div");
+        div.innerHTML = key;
+        var th = document.createElement("th");
+        th.innerHTML = key + div.outerHTML;
+        thead.appendChild(th);
+    }
+
+    //add table content
+    var tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
+    for (var i = 0; array && i < array.length; i++) {
+        var a = array[i];
+        var row = document.createElement("tr");
+        for (var j in keys) {
+            var k = keys[j];
+            row.innerHTML +=
+                "<td onkeydown='' onblur='updataItem(event)' contenteditable='true'>" +
+                a[k] +
+                "</td>";
+        }
+        row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>";
+        tbody.appendChild(row);
+    }
+    return keys;
+}
+
+// add filter for each attribute
+function fillFilter(keys) {
+    var filter = document.querySelector(".filter");
+    filter.innerHTML = "";
+
+    for (var i in keys) {
+        filter.innerHTML +=
+            "<div class='catagory'><div class='title'>" +
+            keys[i] +
+            "</div><input  name='" +
+            keys[i] +
+            "' type='text'></div>";
+    }
+}
