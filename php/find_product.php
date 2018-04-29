@@ -5,7 +5,7 @@ if ($conn->connect_error){
 }
 else{
     echo "Connection Success";
-    $sql = "use zlin80_p1";
+    $sql = "use zli80_p1";
     if ($conn->query($sql) === TRUE){
         // Get the input info to find
         $PID = $_POST['PID'];
@@ -19,27 +19,22 @@ else{
         $image = $_POST['image']
         $sell_time = $_POST['sell_time'];
         $sellerID = $_POST['sellerID'];
+        $userName = $_POST['userName'];
 
-
-
-        $sql = "SELECT * FROM Product, User where Product.sellerID = User.userID ";
-        if($PID){$sql += "AND PID = $PID";}
-        if($brand){$sql += "AND brand = $brand";}
-        if($model){$sql += "AND model = $model";}
-        if($year){$sql += "AND year = $year";}
-        if($color){$sql += "AND color = $color";}
-        if($use_time){$sql += "AND use_time = $use_time";}
-        if($price){$sql += "AND price = $price";}
-        if($image){$sql += "AND image = $image";}
-        if($sell_time){$sql += "AND sell_time = $sell_time";}
-        if($sellerID){$sql += "AND sellerID = $sellerID";}
-
+        $sql = "SELECT * FROM Product"; 
+        if($userName) {$sql += ", User where Product.sellerID = User.userID and User.userName = '$userName'";}
+        if($PID) {$sql += "AND PID = '$PID'";}
+        if($brand) {$sql += "AND brand = '$brand'";}
+        if($model) {$sql += "AND model = '$model'";}
+        if($year) {$sql += "AND year = '$year'";}
+        if($color) {$sql += "AND color = '$color'";}
+        if($use_time) {$sql += "AND use_time = '$use_time'";}
+        if($price) {$sql += "AND price = '$price'";}
+        if($image) {$sql += "AND image = '$image'";}
+        if($sell_time) {$sql += "AND sell_time = '$sell_time'";}
+        if($sellerID) {$sql += "AND sellerID = '$sellerID'";}
         $sql += ";";
-
         $result = $conn->query($sql);
-
-
-
         // Split the info from result
         if ($result->num_rows > 0) {
             // output data of each row
@@ -57,12 +52,10 @@ else{
                 $myobj->image = $row["image"];
                 $myobj->sell_time = $row["sell_time"];
                 $myobj->sellerID = $row["sellerID"];
-
                 // Add into a json file
                 $myJSON = json_encode($myobj);
-
             }
-            echo myJSON;
+            echo $myJSON;
         }
         else {
             echo "0 results";
