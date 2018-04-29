@@ -1,7 +1,12 @@
 <?php
-require_once('db_setup.php');
-$sql = "USE eMarket";
-$conn->query($sql);
+$conn = new mysqli("localhost", "zli80", "950115");
+if ($conn->connect_error){
+    die("Connection failed:".mysql_error());
+}
+else{
+    $sql = "use zli80_p1";
+    if ($conn->query($sql) === TRUE){
+
 
 
 // Get the input info to find
@@ -12,7 +17,6 @@ $phone = $_POST['phone'];
 $email = $_POST['email'];
 
 
-if($conn->query($sql)===TRUE){
 
     $sql = "SELECT * FROM User, Normal where User.userID = Normal.userID";
     if($userID){$sql += "AND userID = $userID";}
@@ -21,30 +25,40 @@ if($conn->query($sql)===TRUE){
     if($phone){$sql += "AND phone = $phone";}
     if($email){$sql += "AND email = $email";}
 
-    $sql += ";"
+    //$sql += ";"
 
     $result = $conn->query($sql);
 
-}
+
 
 // Split the info from result
 if ($result->num_rows > 0) {
     // output data of each row
+    $arr = array();
     while($row = $result->fetch_assoc()) {
         // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
         // Convert into json
-        $myobj->userID = $row["userID"];
-        $myobj->userName = $row["userName"];
-        $myobj->password = $row["password"];
+        $myobj = array(
+            userID => $row["userID"],
+            userName => $row["userName"],
+            password => $row["password"]
+        );
+        $arr[] = $myobj;
 
-        // Add into a json file
-        $myJSON = json_encode($myobj);
+        
 
     }
+    // Add into a json file
+    $myJSON = json_encode($myobj);
     echo myJSON;
 }
 else {
     echo "0 results";
+}
+}
+else{
+        echo "Error using database:".mysql_error();
+    }
 }
 $conn->close();
 ?>

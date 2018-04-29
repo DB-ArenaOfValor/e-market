@@ -1,7 +1,11 @@
 <?php
-require_once('db_setup.php');
-$sql = "USE eMarket";
-$conn->query($sql);
+$conn = new mysqli("localhost", "zli80", "950115");
+if ($conn->connect_error){
+    die("Connection failed:".mysql_error());
+}
+else{
+    $sql = "use zli80_p1";
+    if ($conn->query($sql) === TRUE){
 
 // Get rating info
 $ratingID = $_POST['ratingID'];
@@ -10,8 +14,6 @@ $sellerID = $_POST['sellerID'];
 $PR_PID = $_POST['PR_PID'];
 $rating_time = $_POST['rating_time'];
 
-if($conn->query($sql)===TRUE){
-//	echo "Connected!";
 
 
 // Edit the info
@@ -31,6 +33,11 @@ if($rating_time){
     $sql = "update Rating set rating_time ='$rating_time' where ratingID = '$ratingID';";
     $conn->query($sql);
 }
-
+}
+else{
+        echo "Error using database:".mysql_error();
+    }
+}
+$conn->close();
 // header("Location: Parents_Userinfo.php");
 ?>

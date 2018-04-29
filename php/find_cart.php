@@ -17,7 +17,7 @@ else{
             if($user_cartID){$sql += "AND user_cartID = $user_cartID";}
             if($cart_PID){$sql += "AND cart_PID = $cart_PID";}
 
-            $sql += ";";
+            //$sql += ";";
 
             $result = $conn->query($sql);
 
@@ -26,16 +26,20 @@ else{
         // Split the info from result
         if ($result->num_rows > 0) {
             // output data of each row
+            $arr = array();
             while($row = $result->fetch_assoc()) {
                 // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
                 // Convert into json
-                $myobj->user_cartID = $row["user_cartID"];
-                $myobj->cart_PID = $row["cart_PID"];
-
-                // Add into a json file
-                $myJSON = json_encode($myobj);
+                $myobj = array(
+                    user_cartID => $row["user_cartID"],
+                    cart_PID => $row["cart_PID"]
+                );
+                $arr[] = $myobj; 
+                
 
             }
+            // Add into a json file
+            $myJSON = json_encode($myobj);
             echo myJSON;
         }
         else {

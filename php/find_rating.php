@@ -1,7 +1,11 @@
 <?php
-require_once('db_setup.php');
-$sql = "USE eMarket";
-$conn->query($sql);
+$conn = new mysqli("localhost", "zli80", "950115");
+if ($conn->connect_error){
+    die("Connection failed:".mysql_error());
+}
+else{
+    $sql = "use zli80_p1";
+    if ($conn->query($sql) === TRUE){
 
 
 // Get the input info to find
@@ -12,7 +16,6 @@ $PR_PID = $_POST['PR_PID'];
 $rating_time = $_POST['rating_time'];
 
 
-if($conn->query($sql)===TRUE){
 
     $sql = "SELECT * FROM Rating, User where Rating.sellerID = User.userID  ";
     if($ratingID){$sql += "AND ratingID = $ratingID";}
@@ -21,32 +24,40 @@ if($conn->query($sql)===TRUE){
     if($PR_PID){$sql += "AND PR_PID = $PR_PID";}
     if($rating_time){$sql += "AND rating_time = $rating_time";}
 
-    $sql += ";"
+    //$sql += ";"
 
     $result = $conn->query($sql);
 
-}
+
 
 // Split the info from result
 if ($result->num_rows > 0) {
     // output data of each row
+    $arr = array();
     while($row = $result->fetch_assoc()) {
         // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
         // Convert into json
-        $myobj->ratingID = $row["ratingID"];
-        $myobj->buyerID = $row["buyerID"];
-        $myobj->sellerID = $row["sellerID"];
-        $myobj->PR_PID = $row["PR_PID"];
-        $myobj->rating_time = $row["rating_time"];
+        $myobj = array(
+            ratingID => $row["ratingID"],
+            buyerID => $row["buyerID"],
+            sellerID => $row["sellerID"],
+            PR_PID => $row["PR_PID"],
+            rating_time => $row["rating_time"]
+        );
 
-        // Add into a json file
-        $myJSON = json_encode($myobj);
-
+        $arr[] = $myobj;
     }
+    // Add into a json file
+    $myJSON = json_encode($myobj);
     echo myJSON;
 }
 else {
     echo "0 results";
+}
+}
+else{
+        echo "Error using database:".mysql_error();
+    }
 }
 $conn->close();
 ?>

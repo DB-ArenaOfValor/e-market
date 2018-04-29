@@ -20,8 +20,8 @@ else{
         $sellerID = $_POST['sellerID'];
         $userName = $_POST['userName'];
 
-        $sql = "SELECT * FROM Product"; 
-        if($userName) {$sql += ", User where Product.sellerID = User.userID and User.userName = '$userName'";}
+        $sql = "SELECT * FROM Product, User where Product.sellerID = User.userID"; 
+        if($userName) {$sql += "and User.userName = '$userName'";}
         if($PID) {$sql += "AND PID = '$PID'";}
         if($brand) {$sql += "AND brand = '$brand'";}
         if($model) {$sql += "AND model = '$model'";}
@@ -42,16 +42,16 @@ else{
                 // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
                 // Convert into json
                 $myobj = array(
-                    PID => $row["PID"]
-                    brand => $row["brand"]
-                    model => $row["model"]
-                    year => $row["year"]
-                    color => $row["color"]
-                    use_time => $row["use_time"]
-                    price => $row["price"]
-                    state => $row["state"]
-                    image => $row["image"]
-                    sell_time => $row["sell_time"]
+                    PID => $row["PID"],
+                    brand => $row["brand"],
+                    model => $row["model"],
+                    year => $row["year"],
+                    color => $row["color"],
+                    use_time => $row["use_time"],
+                    price => $row["price"],
+                    state => $row["state"],
+                    image => $row["image"],
+                    sell_time => $row["sell_time"],
                     sellerID => $row["sellerID"]
                 );
                 

@@ -18,7 +18,7 @@ if($conn->query($sql)===TRUE){
     if($orderID){$sql += "AND orderID = $orderID";}
     if($PID){$sql += "AND PID = $PID";}
 
-    $sql += ";";
+    //$sql += ";";
 
     $result = $conn->query($sql);
 
@@ -27,16 +27,22 @@ if($conn->query($sql)===TRUE){
 // Split the info from result
 if ($result->num_rows > 0) {
     // output data of each row
+    $arr = array();
     while($row = $result->fetch_assoc()) {
         // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
         // Convert into json
-        $myobj->orderID = $row["orderID"];
-        $myobj->PID = $row["PID"];
+        $myobj = array(
+            orderID => $row["orderID"],
+            PID => $row["PID"]
+        );
+        $arr[] = $myobj;
 
         // Add into a json file
         $myJSON = json_encode($myobj);
 
     }
+    // Add into a json file
+    $myJSON = json_encode($myobj);
     echo myJSON;
 }
 else {
