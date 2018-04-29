@@ -21,17 +21,17 @@ else{
         $userName = $_POST['userName'];
 
         $sql = "SELECT * FROM Product, User where Product.sellerID = User.userID"; 
-        if($userName) {$sql .= "and Product.userName = '$userName'";}
-        if($PID) {$sql .= "AND Product.PID = '$PID'";}
-        if($brand) {$sql .= "AND Product.brand = '$brand'";}
-        if($model) {$sql .= "AND Product.model = '$model'";}
-        if($year) {$sql .= "AND Product.year = '$year'";}
-        if($color) {$sql .= "AND Product.color = '$color'";}
-        if($use_time) {$sql .= "AND Product.use_time = '$use_time'";}
-        if($price) {$sql .= "AND Product.price = '$price'";}
-        if($image) {$sql .= "AND Product.image = '$image'";}
-        if($sell_time) {$sql .= "AND Product.sell_time = '$sell_time'";}
-        if($sellerID) {$sql .= "AND Product.sellerID = '$sellerID'";}
+        if($userName) {$sql .= " and Product.userName = '$userName'";}
+        if($PID) {$sql .= " AND Product.PID = '$PID'";}
+        if($brand) {$sql .= " AND Product.brand = '$brand'";}
+        if($model) {$sql .= " AND Product.model = '$model'";}
+        if($year) {$sql .= " AND Product.year = '$year'";}
+        if($color) {$sql .= " AND Product.color = '$color'";}
+        if($use_time) {$sql .= " AND Product.use_time = '$use_time'";}
+        if($price) {$sql .= " AND Product.price = '$price'";}
+        if($image) {$sql .= " AND Product.image = '$image'";}
+        if($sell_time) {$sql .= " AND Product.sell_time = '$sell_time'";}
+        if($sellerID) {$sql .= " AND Product.sellerID = '$sellerID'";}
         $sql += ";";
         $result = $conn->query($sql);
         // Split the info from result

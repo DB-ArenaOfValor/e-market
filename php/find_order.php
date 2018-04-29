@@ -16,10 +16,10 @@ $ship_address = $_POST['ship_address'];
 if($conn->query($sql)===TRUE){
 
     $sql = "SELECT * FROM Orders, User where Product.buyerID = User.userID ";
-    if($orderID){$sql .= "AND Orders.orderID = $orderID";}
-    if($buyerID){$sql .= "AND Orders.buyerID = $buyerID";}
-    if($order_time){$sql .= "AND Orders.order_time = $order_time";}
-    if($ship_address){$sql .= "AND Orders.ship_address = $ship_address";}
+    if($orderID){$sql .= " AND Orders.orderID = $orderID";}
+    if($buyerID){$sql .= " AND Orders.buyerID = $buyerID";}
+    if($order_time){$sql .= " AND Orders.order_time = $order_time";}
+    if($ship_address){$sql .= " AND Orders.ship_address = $ship_address";}
 
     $sql .= ";";
 
