@@ -23,7 +23,7 @@ function ajax(method, url, data, callback) {
             return this.responseText;
         }
     };
-    xmlhttp.open(method, url, true);
+    xmlhttp.open(method, "../php/" + url, true);
     xmlhttp.send(data);
 }
 
