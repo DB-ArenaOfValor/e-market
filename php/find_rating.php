@@ -18,13 +18,13 @@ $rating_time = $_POST['rating_time'];
 
 
     $sql = "SELECT * FROM Rating, User where Rating.sellerID = User.userID  ";
-    if($ratingID){$sql += "AND ratingID = $ratingID";}
-    if($buyerID){$sql += "AND buyerID = $buyerID";}
-    if($sellerID){$sql += "AND sellerID = $sellerID";}
-    if($PR_PID){$sql += "AND PR_PID = $PR_PID";}
-    if($rating_time){$sql += "AND rating_time = $rating_time";}
+    if($ratingID){$sql .= "AND Rating.ratingID = $ratingID";}
+    if($buyerID){$sql .= "AND Rating.buyerID = $buyerID";}
+    if($sellerID){$sql .= "AND RatingsellerID = $sellerID";}
+    if($PR_PID){$sql .= "AND Rating.PR_PID = $PR_PID";}
+    if($rating_time){$sql .= "AND Rating.rating_time = $rating_time";}
 
-    //$sql += ";"
+    $sql .= ";";
 
     $result = $conn->query($sql);
 

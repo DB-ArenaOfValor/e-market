@@ -15,10 +15,10 @@ $PID = $_POST['PID'];
 if($conn->query($sql)===TRUE){
 
     $sql = "SELECT * FROM Order_detail, Orders where Order_detail.orderID = Orders.orderID  ";
-    if($orderID){$sql += "AND orderID = $orderID";}
-    if($PID){$sql += "AND PID = $PID";}
+    if($orderID){$sql .= "AND Order_detailorderID = $orderID";}
+    if($PID){$sql .= "AND Order_detailPID = $PID";}
 
-    //$sql += ";";
+    $sql .= ";";
 
     $result = $conn->query($sql);
 

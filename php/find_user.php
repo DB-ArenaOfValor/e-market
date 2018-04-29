@@ -19,13 +19,13 @@ $email = $_POST['email'];
 
 
     $sql = "SELECT * FROM User, Normal where User.userID = Normal.userID";
-    if($userID){$sql += "AND userID = $userID";}
-    if($userName){$sql += "AND userName = $userName";}
-    if($sex){$sql += "AND sex = $sex";}
-    if($phone){$sql += "AND phone = $phone";}
-    if($email){$sql += "AND email = $email";}
+    if($userID){$sql .= "AND User.userID = $userID";}
+    if($userName){$sql .= "AND User.userName = $userName";}
+    if($sex){$sql .= "AND User.sex = $sex";}
+    if($phone){$sql .= "AND User.phone = $phone";}
+    if($email){$sql .= "AND User.email = $email";}
 
-    //$sql += ";"
+    $sql .= ";";
 
     $result = $conn->query($sql);
 

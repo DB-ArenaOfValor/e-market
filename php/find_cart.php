@@ -14,10 +14,10 @@ else{
         if($conn->query($sql)===TRUE){
 
             $sql = "SELECT * FROM Cart, User where Cart.user_cartID = User.userID  ";
-            if($user_cartID){$sql += "AND user_cartID = $user_cartID";}
-            if($cart_PID){$sql += "AND cart_PID = $cart_PID";}
+            if($user_cartID){$sql .= "AND Cart.user_cartID = $user_cartID";}
+            if($cart_PID){$sql .= "AND Cart.cart_PID = $cart_PID";}
 
-            //$sql += ";";
+            $sql .= ";";
 
             $result = $conn->query($sql);
 
