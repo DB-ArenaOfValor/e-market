@@ -128,7 +128,7 @@ Params(form data)(product example):
 Return:
 
 ```
-[
+{
     success: true,
     data:               // the added item
     {
@@ -144,5 +144,5 @@ Return:
         "sell_time": "2015-08-31 13 : 05 : 28",
         "sellerID": "00002"
     }
-]
+}
 ```
