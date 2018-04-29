@@ -46,12 +46,21 @@ if ($result->num_rows > 0) {
         
     }
     // Add into a json file
-    $myJSON = json_encode($myobj);
+    $myJSON = json_encode($arr);
 
-    echo myJSON;
+    echo $myJSON;
 }
 else {
-    echo "0 results";
+    $arr = array();
+    $myobj = array(
+            orderID => NULL,
+            buyerID => NULL,
+            order_time => NULL,
+            ship_address => NULL
+        );
+        $arr[] = $myobj;
+            $myJSON = json_encode($arr);
+            echo $myJSON;
 }
 }
 else{

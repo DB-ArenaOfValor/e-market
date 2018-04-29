@@ -63,7 +63,25 @@ else{
             echo $myJSON;
         }
         else {
-            echo "0 results";
+            $arr = array();
+            $myobj = array(
+                    PID => NULL,
+                    brand => NULL,
+                    model => NULL,
+                    year => NULL,
+                    color => NULL,
+                    use_time => NULL,
+                    price => NULL,
+                    state => NULL,
+                    image => NULL,
+                    sell_time => NULL,
+                    sellerID => NULL
+                );
+                
+                // Add into a json file
+                $arr[] = $myobj;
+            $myJSON = json_encode($arr);
+            echo $myJSON;
         }
     }
     else{

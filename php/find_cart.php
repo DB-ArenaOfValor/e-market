@@ -41,11 +41,18 @@ else{
 
             }
             // Add into a json file
-            $myJSON = json_encode($myobj);
-            echo myJSON;
+            $myJSON = json_encode($arr);
+            echo $myJSON;
         }
         else {
-            echo "0 results";
+            $arr = array();
+            $myobj = array(
+                    user_cartID => NULL,
+                    cart_PID => NULL
+                );
+                $arr[] = $myobj; 
+            $myJSON = json_encode($arr);
+            echo $myJSON;
         }
     }
     else{

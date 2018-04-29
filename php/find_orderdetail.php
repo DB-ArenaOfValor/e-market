@@ -8,6 +8,7 @@ else{
     if ($conn->query($sql) === TRUE){
 
 // Get the input info to find
+$userName = $_POST['userName'];
 $orderID = $_POST['orderID'];
 $PID = $_POST['PID'];
 
@@ -38,16 +39,21 @@ if ($result->num_rows > 0) {
         );
         $arr[] = $myobj;
 
-        // Add into a json file
-        $myJSON = json_encode($myobj);
 
     }
     // Add into a json file
-    $myJSON = json_encode($myobj);
-    echo myJSON;
+    $myJSON = json_encode($arr);
+    echo $myJSON;
 }
 else {
-    echo "0 results";
+    $arr = array();
+    $myobj = array(
+            orderID => NULL,
+            PID => NULL
+        );
+        $arr[] = $myobj;
+            $myJSON = json_encode($arr);
+            echo $myJSON;
 }
 }
 else{
