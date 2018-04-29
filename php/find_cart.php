@@ -9,7 +9,7 @@ else{
         // Get the input info to find
         $user_cartID = $_POST['user_cartID'];
         $cart_PID = $_POST['cart_PID'];
-        $userName = $_POST['userName']
+        $userName = $_POST['userName'];
 
 
         if($conn->query($sql)===TRUE){

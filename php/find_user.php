@@ -21,9 +21,9 @@ $email = $_POST['email'];
     $sql = "SELECT * FROM User, Normal where User.userID = Normal.userID";
     if($userID){$sql .= " AND User.userID = $userID";}
     if($userName){$sql .= " AND User.userName = $userName";}
-    if($sex){$sql .= " AND User.sex = $sex";}
-    if($phone){$sql .= " AND User.phone = $phone";}
-    if($email){$sql .= " AND User.email = $email";}
+    if($sex){$sql .= " AND Normal.sex = $sex";}
+    if($phone){$sql .= " AND Normal.phone = $phone";}
+    if($email){$sql .= " AND Normal.email = $email";}
 
     $sql .= ";";
 

@@ -16,9 +16,9 @@ $PID = $_POST['PID'];
 if($conn->query($sql)===TRUE){
 
     $sql = "SELECT * FROM Order_detail, Orders where Order_detail.orderID = Orders.orderID AND Order.buyerID = User.userID";
-    if($userName){$sql .= "AND User.userName = $userName";}
-    if($orderID){$sql .= " AND Order_detailorderID = $orderID";}
-    if($PID){$sql .= " AND Order_detailPID = $PID";}
+    if($userName){$sql .= " AND User.userName = $userName";}
+    if($orderID){$sql .= " AND Order_detail.orderID = $orderID";}
+    if($PID){$sql .= " AND Order_detail.PID = $PID";}
 
     $sql .= ";";
 

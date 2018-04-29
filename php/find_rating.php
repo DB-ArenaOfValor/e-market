@@ -18,7 +18,7 @@ $userName = $_POST['userName'];
 
 
 
-    $sql = "SELECT * FROM Rating, User where Rating.sellerID = User.userID  ";
+    $sql = "SELECT * FROM Rating, User where Rating.sellerID = User.userID";
     if($userName){$sql .= " AND User.userName = $userName";}
     if($ratingID){$sql .= " AND Rating.ratingID = $ratingID";}
     if($buyerID){$sql .= " AND Rating.buyerID = $buyerID";}

@@ -16,7 +16,7 @@ $color = $_POST['color'];
 $use_time = $_POST['use_time'];
 $price = $_POST['price'];
 $state = $_POST['state'];
-$image = $_POST['image']
+$image = $_POST['image'];
 $sell_time = $_POST['sell_time'];
 $sellerID = $_POST['sellerID'];
 
