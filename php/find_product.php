@@ -21,7 +21,7 @@ else{
         $userName = $_POST['userName'];
 
         $sql = "SELECT * FROM Product, User where Product.sellerID = User.userID"; 
-        if($userName) {$sql .= " and Product.userName = '$userName'";}
+        if($userName) {$sql .= " AND Product.userName = '$userName'";}
         if($PID) {$sql .= " AND Product.PID = '$PID'";}
         if($brand) {$sql .= " AND Product.brand = '$brand'";}
         if($model) {$sql .= " AND Product.model = '$model'";}

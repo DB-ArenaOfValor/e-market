@@ -11,11 +11,13 @@ $orderID = $_POST['orderID'];
 $buyerID = $_POST['buyerID'];
 $order_time = $_POST['order_time'];
 $ship_address = $_POST['ship_address'];
+$userName = $_POST['userName'];
 
 
 if($conn->query($sql)===TRUE){
 
-    $sql = "SELECT * FROM Orders, User where Product.buyerID = User.userID ";
+    $sql = "SELECT * FROM Orders, User where Orders.buyerID = User.userID ";
+    if($userName){$sql .= " AND User.userName = $userName";}
     if($orderID){$sql .= " AND Orders.orderID = $orderID";}
     if($buyerID){$sql .= " AND Orders.buyerID = $buyerID";}
     if($order_time){$sql .= " AND Orders.order_time = $order_time";}

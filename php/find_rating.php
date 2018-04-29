@@ -14,10 +14,12 @@ $buyerID = $_POST['buyerID'];
 $sellerID = $_POST['sellerID'];
 $PR_PID = $_POST['PR_PID'];
 $rating_time = $_POST['rating_time'];
+$userName = $_POST['userName'];
 
 
 
     $sql = "SELECT * FROM Rating, User where Rating.sellerID = User.userID  ";
+    if($userName){$sql .= " AND User.userName = $userName";}
     if($ratingID){$sql .= " AND Rating.ratingID = $ratingID";}
     if($buyerID){$sql .= " AND Rating.buyerID = $buyerID";}
     if($sellerID){$sql .= " AND RatingsellerID = $sellerID";}
