@@ -4,7 +4,6 @@ if ($conn->connect_error){
     die("Connection failed:".mysql_error());
 }
 else{
-    echo "Connection Success";
     $sql = "use zli80_p1";
     if ($conn->query($sql) === TRUE){
         // Get the input info to find
@@ -16,7 +15,7 @@ else{
         $use_time = $_POST['use_time'];
         $price = $_POST['price'];
         $state = $_POST['state'];
-        $image = $_POST['image']
+        $image = $_POST['image'];
         $sell_time = $_POST['sell_time'];
         $sellerID = $_POST['sellerID'];
         $userName = $_POST['userName'];
@@ -33,28 +32,34 @@ else{
         if($image) {$sql += "AND image = '$image'";}
         if($sell_time) {$sql += "AND sell_time = '$sell_time'";}
         if($sellerID) {$sql += "AND sellerID = '$sellerID'";}
-        $sql += ";";
+        //$sql += ";";
         $result = $conn->query($sql);
         // Split the info from result
         if ($result->num_rows > 0) {
+            $arr = array();
             // output data of each row
             while($row = $result->fetch_assoc()) {
                 // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
                 // Convert into json
-                $myobj->PID = $row["PID"];
-                $myobj->brand = $row["brand"];
-                $myobj->model = $row["model"];
-                $myobj->year = $row["year"];
-                $myobj->color = $row["color"];
-                $myobj->use_time = $row["use_time"];
-                $myobj->price = $row["price"];
-                $myobj->state = $row["state"];
-                $myobj->image = $row["image"];
-                $myobj->sell_time = $row["sell_time"];
-                $myobj->sellerID = $row["sellerID"];
+                $myobj = array(
+                    PID => $row["PID"]
+                    brand => $row["brand"]
+                    model => $row["model"]
+                    year => $row["year"]
+                    color => $row["color"]
+                    use_time => $row["use_time"]
+                    price => $row["price"]
+                    state => $row["state"]
+                    image => $row["image"]
+                    sell_time => $row["sell_time"]
+                    sellerID => $row["sellerID"]
+                );
+                
                 // Add into a json file
-                $myJSON = json_encode($myobj);
+                $arr[] = $myobj;
+                
             }
+            $myJSON = json_encode($arr);
             echo $myJSON;
         }
         else {
