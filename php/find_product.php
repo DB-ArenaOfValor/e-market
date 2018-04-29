@@ -32,7 +32,7 @@ else{
         if($image) {$sql .= " AND Product.image = '$image'";}
         if($sell_time) {$sql .= " AND Product.sell_time = '$sell_time'";}
         if($sellerID) {$sql .= " AND Product.sellerID = '$sellerID'";}
-        $sql += ";";
+        $sql .= ";";
         $result = $conn->query($sql);
         // Split the info from result
         if ($result->num_rows > 0) {
