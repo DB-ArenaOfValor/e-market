@@ -4,7 +4,7 @@ if ($conn->connect_error){
 	die("Connection failed:".mysql_error());
 }
 else{
-	$sql = "use zlin80_p1";
+	$sql = "use zli80_p1";
 	if ($conn->query($sql) === TRUE){
 		$PID = $_POST['PID'];
 		$query = "delete from Product where PID = '$PID';";
