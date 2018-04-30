@@ -23,7 +23,7 @@ function ajax(method, url, data, callback) {
                 callback && callback(JSON.parse(this.responseText));
             } else callback && callback();
             return this.responseText;
-        } else {
+        } else if (this.readyState == 4) {
             console.log(this);
         }
     };
@@ -96,8 +96,14 @@ function fillTable(array) {
 
     // new row to add item
     var newRow = document.createElement("tr");
-    for (var index in keys)
-        newRow.innerHTML += "<td contenteditable='true'></td>"; // blank cell
+    for (var index in keys) {
+        if (keys[index].includes("ID")) {
+            newRow.innerHTML += "<td onclick='IDwarning()'></td>"; // blank  id cell
+        } else {
+            newRow.innerHTML += "<td contenteditable='true'></td>"; // blank cell
+        }
+    }
+
     newRow.innerHTML += "<td class='add' onclick='addItem(event)'>Add</td>"; // add cell
     tbody.appendChild(newRow);
 
@@ -106,10 +112,14 @@ function fillTable(array) {
         var row = document.createElement("tr");
         for (var j in keys) {
             var k = keys[j];
-            row.innerHTML +=
-                "<td onkeydown='' onblur='updataItem(event)' contenteditable='true'>" +
-                a[k] +
-                "</td>";
+            if (k.includes("ID")) {
+                row.innerHTML += "<td onclick='IDwarning()'>" + a[k] + "</td>"; // IDs cannot be edited or added
+            } else {
+                row.innerHTML +=
+                    "<td onkeydown='' onblur='updataItem(event)' contenteditable='true'>" +
+                    a[k] +
+                    "</td>";
+            }
         }
         row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>"; // delete cell
         tbody.appendChild(row);
@@ -148,10 +158,15 @@ function addCallback(result) {
     // add a new row in the current table
     var row = document.createElement("tr");
     for (var key in result.data) {
-        row.innerHTML +=
-            "<td onblur='updataItem(event)' contenteditable='true'>" +
-            result.data[key] +
-            "</td>";
+        if (key.includes("ID")) {
+            row.innerHTML +=
+                "<td onclick='IDwarning()'>" + result.data[key] + "</td>";
+        } else {
+            row.innerHTML +=
+                "<td onblur='updataItem(event)' contenteditable='true'>" +
+                result.data[key] +
+                "</td>";
+        }
     }
     row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>"; // delete cell
     document.querySelector("tbody").appendChild(row);
@@ -163,4 +178,9 @@ function clearAddRow() {
     for (var i = 0; i < tds.length - 1; i++) {
         tds[i].innerHTML = "";
     }
+}
+
+// alert when user want to add or edit IDs
+function IDwarning() {
+    alert("IDs cannot be edited manually.");
 }
