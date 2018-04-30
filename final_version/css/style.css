@@ -1,0 +1,144 @@
+body {
+    background: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.rightside {
+    /* width: 360px;
+    height: 550px;
+    margin-top: 150px;
+    margin-left: 750px;
+    border: 1px solid white; */
+    width: 30%;
+    margin-top: 11%;
+    margin-left: 50%;
+}
+
+.header {
+    font-family: "Verdana";
+    font-size: 24px;
+    margin-left: 0px;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: default;
+    background-image: -webkit-gradient(linear, left 0, right 0, from(rgb(4, 94, 170)), to(rgb(1, 152, 216)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form {
+    margin-top: 60px;
+    margin-left: 5px;
+}
+
+#signup {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+/*.pheader {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-left: 2em;
+    color: rgb(1, 152, 216);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}*/
+
+#signup input[type="text"], #signup input[type="email"], #signup input[type="password"] {
+    padding: 5px;
+    width: 280px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom: 2px solid rgb(1, 152, 216);
+    color: rgb(1, 152, 216);
+    text-align: left;
+    outline: none;
+    letter-spacing: 1px;
+    font-size: 15px;
+    background-color: white;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: 600;
+    font-family: 'Poiret One', cursive;
+}
+
+#login input[type="text"], #login input[type="password"] {
+    padding: 5px;
+    width: 280px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom: 2px solid rgb(1, 152, 216);
+    color: rgb(1, 152, 216);
+    text-align: left;
+    outline: none;
+    letter-spacing: 1px;
+    font-size: 15px;
+    background-color: white;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    margin-left: 2em;
+    font-weight: 600;
+    font-family: 'Poiret One', cursive;
+}
+
+.register {
+    padding: 15px;
+    background-color: gray;
+    width: 200px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    margin-top: 10%;
+    margin-left: 45px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.login {
+    padding: 15px;
+    background-color: gray;
+    width: 200px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    margin-top: 29.5%;
+    margin-left: 75px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.register:hover, .login:hover {
+    background-color: rgb(1, 152, 216);
+    color: #000;
+}
+
+.tail {
+    font-family: "Verdana";
+    margin-top: 1.8em;
+    margin-left: 1.8em;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(1, 152, 216);
+}
