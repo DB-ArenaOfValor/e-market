@@ -142,6 +142,13 @@ function fillFilter(keys) {
     }
 }
 
+// submit filter when form is changed and change table
+function submitFilter() {
+    var formData = new FormData(document.querySelector("form.filter"));
+    displayFormData(formData);
+    ajax("POST", "find_" + selectedTab + ".php", formData, fillTable);
+}
+
 // failure: alert
 // success: alert, clear add row and add a row in the current table
 function addCallback(result) {
@@ -156,22 +163,23 @@ function addCallback(result) {
     //clear the add row
     clearAddRow();
     // add a new row in the current table
-    var row = document.createElement("tr");
-    var index = 0;
-    for (var key in result.data) {
-        if (result.data.length != 2 && index == 0 && key.includes("ID")) {
-            row.innerHTML +=
-                "<td onclick='IDwarning()'>" + result.data[key] + "</td>";
-        } else {
-            row.innerHTML +=
-                "<td onblur='updataItem(event)' contenteditable='true'>" +
-                result.data[key] +
-                "</td>";
-        }
-        index = index + 1;
-    }
-    row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>"; // delete cell
-    document.querySelector("tbody").appendChild(row);
+    // var row = document.createElement("tr");
+    // var index = 0;
+    // for (var key in result.data) {
+    //     if (result.data.length != 2 && index == 0 && key.includes("ID")) {
+    //         row.innerHTML +=
+    //             "<td onclick='IDwarning()'>" + result.data[key] + "</td>";
+    //     } else {
+    //         row.innerHTML +=
+    //             "<td onblur='updataItem(event)' contenteditable='true'>" +
+    //             result.data[key] +
+    //             "</td>";
+    //     }
+    //     index = index + 1;
+    // }
+    // row.innerHTML += "<td onclick='deleteItem(event)'>&#9003;</td>"; // delete cell
+    // document.querySelector("tbody").appendChild(row);
+    submitFilter();
 }
 
 // clear the add row after successfully adding an item

@@ -23,13 +23,6 @@ function fill(array) {
     fillFilter(keys);
 }
 
-// submit filter when form is changed and change table
-function submitFilter() {
-    var formData = new FormData(document.querySelector("form.filter"));
-    displayFormData(formData);
-    ajax("POST", "find_" + selectedTab + ".php", formData, fillTable);
-}
-
 // delete an item
 function deleteItem(e) {
     ajax(
