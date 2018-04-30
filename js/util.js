@@ -97,7 +97,7 @@ function fillTable(array) {
     // new row to add item
     var newRow = document.createElement("tr");
     for (var index in keys) {
-        if (keys.length == 2 && keys[index].includes("ID")) {
+        if (keys.length != 2 && keys[index].includes("ID")) {
             newRow.innerHTML += "<td onclick='IDwarning()'></td>"; // blank  id cell
         } else {
             newRow.innerHTML += "<td contenteditable='true'></td>"; // blank cell
@@ -112,7 +112,7 @@ function fillTable(array) {
         var row = document.createElement("tr");
         for (var j in keys) {
             var k = keys[j];
-            if (keys.length == 2 && k.includes("ID")) {
+            if (keys.length != 2 && k.includes("ID")) {
                 row.innerHTML += "<td onclick='IDwarning()'>" + a[k] + "</td>"; // IDs cannot be edited or added
             } else {
                 row.innerHTML +=
@@ -158,7 +158,7 @@ function addCallback(result) {
     // add a new row in the current table
     var row = document.createElement("tr");
     for (var key in result.data) {
-        if (keys.length == 2 && key.includes("ID")) {
+        if (keys.length != 2 && key.includes("ID")) {
             row.innerHTML +=
                 "<td onclick='IDwarning()'>" + result.data[key] + "</td>";
         } else {
