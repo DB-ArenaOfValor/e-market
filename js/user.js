@@ -48,9 +48,20 @@ function deleteItem(e) {
     formData.append("userName", userName);
     displayFormData(formData);
     var sellerID = formData.get("sellerID");
-    if (sellerID != userID) {
+    var usercartid = formData.get("user_cartID");
+    if (sellerID != userID && usercartid != userID) {
         alert("You do not have the authority to do this...");
-    } else {
+    }
+    else if(usercartid == userID){
+        ajax(
+            "POST",
+            "delete_cart.php",
+            formData,
+            () => e.target.parentNode.remove() // remove clicked row
+        );
+        alert("Delete successfully!");
+    }
+    else {
         ajax(
             "POST",
             "delete_" + selectedTab + ".php",

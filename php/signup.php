@@ -27,7 +27,7 @@ else{
 					$conn->query($query3);
 					setcookie("userName", $userName);
 					setcookie("password", $password);
-					header("location: ../user.html?/userName=$userName");
+					header("location: ../user.html?userName=$userName?userID=$userID");
 				}
 				else{
 					echo "Wrong user ID";
