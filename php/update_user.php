@@ -22,15 +22,15 @@ if($password){
     $conn->query($sql);
 }
 
-if($sex){
+//if($sex){
     $sql = "update Normal set sex ='$sex' where userID = '$userID'";
     $conn->query($sql);
-}
+//}
 
-if($phone){
+//if($phone){
     $sql = "update Normal set phone ='$phone' where userID = '$userID'";
     $conn->query($sql);
-}
+//}
 
 if($email){
     $sql = "update Normal set email ='$email' where userID = '$userID'";

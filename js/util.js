@@ -18,12 +18,16 @@ function ajax(method, url, data, callback) {
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(JSON.parse(this.responseText));
-            callback && callback(JSON.parse(this.responseText));
+            if (this.responseText) {
+                console.log(JSON.parse(this.responseText));
+                callback && callback(JSON.parse(this.responseText));
+            } else callback && callback();
             return this.responseText;
+        } else {
+            console.log(this);
         }
     };
-    xmlhttp.open(method, "../php/" + url, true);
+    xmlhttp.open(method, "./php/" + url, true);
     xmlhttp.send(data);
 }
 
@@ -133,7 +137,7 @@ function fillFilter(keys) {
 function addCallback(result) {
     //failure
     if (!result.success) {
-        alert("Error!");
+        alert("Error! Please enter normally...");
         return;
     }
 

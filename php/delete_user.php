@@ -9,12 +9,17 @@ else{
 		$userID = $_POST['userID'];
 		$query = "delete from User where userID = '$userID';";
 		if($conn->query($query) === TRUE){
-			$query1 = "detele from Product where sellerID = '$userID' and state = 0;";
-			if($conn->query($query1) === TRUE){
-				// success
-			}
-			else{
-				echo "Failed to delete product:".mysql_error();
+			$query1 = "select * from Product where sellerID = '$userID' and state = 0;";
+			$result1 = $conn->query($query1);
+			if ($result1->num_rows > 0){
+				$query2 = "delete from Product where sellerID = '$useID' and state = 0;";
+				if($conn->query($query2) === TRUE){
+                                	// success
+                        	}
+                        	else{
+                                	echo "Failed to delete product:".mysql_error();
+                        	}
+
 			}
 		}
 		else{
@@ -25,4 +30,5 @@ else{
 		echo "Error database:".mysql_error();
 	}
 }
+$conn->close();
 ?>

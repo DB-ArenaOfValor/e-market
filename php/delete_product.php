@@ -7,7 +7,7 @@ else{
 	$sql = "use zli80_p1";
 	if ($conn->query($sql) === TRUE){
 		$PID = $_POST['PID'];
-		$query = "delete from Product where PID = '$PID';";
+		$query = "delete from Product where PID = $PID;";
 		if($conn->query($query) === TRUE){
 			// return nothing
 		}
@@ -19,4 +19,5 @@ else{
 		echo "Error database:".mysql_error();
 	}
 }
+$conn->close();
 ?>

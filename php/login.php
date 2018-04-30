@@ -17,18 +17,19 @@ else{
                         $result1 = $conn->query($query1);
                         $row1 = $result1->fetch_assoc();
                         if($row1){
-                                setcookie("userName", $row['userName']);
+                        	setcookie("userName", $row['userName']);
                                 setcookie("password", $row['password']);
-                                header("location: ../user.html");
+				$url = $row['userName'];
+                                header("location: ../user.html?userName=$url&userID=$userID");
                         }
                         else{
-                        	    setcookie("userName", $row['userName']);
+                        	setcookie("userName", $row['userName']);
                                 setcookie("password", $row['password']);
                                 header("location: ../admin.html");
                         }
                 }
                 else{
-						echo "<script> alert('Please make sure you enter the right information or you already have an account...'); </script>";
+			echo "<script> alert('Please make sure you enter the right information or you already have an account...'); </script>";
                         header('Refresh:0.1; url = ../index.html');
                 }
         }
@@ -36,4 +37,5 @@ else{
                 echo "Error database:".mysql_error();
         }
 }
+$conn->close();
 ?>

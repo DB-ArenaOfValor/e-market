@@ -1,6 +1,8 @@
 // the form selected
 var selectedTab = "product";
-var userName = document.cookie.split(";")[0].split("=")[1];
+console.log(decodeURIComponent(document.cookie));
+var userName = getParameterByName("userName");
+var userID = getParameterByName("userID");
 window.onload = function() {
     load(selectedTab);
 };
@@ -14,14 +16,16 @@ function load(tab) {
     // else{
     var formData = new FormData();
     formData.append("userName", userName);
+    formData.append("userID", userID);
+    displayFormData(formData);
     ajax("POST", "find_" + tab + ".php", formData, fill);       
     // }
     //////////////////////////////// for test
-    fill(
-        JSON.parse(
-            '[{"PID": "00000001","state":"0","brand": "Blueberry","model": "iPhone X","year": "2017-11-03","color": "navy red","use_time": "0.2","price": "832.14","image": "1"},{"PID": "00000002","brand": "Sony","model": "iPhone X","year": "2017-11-03","color": "black","use_time": "0.2","price": "832.14","image": "1"}]'
-        )
-    );
+//    fill(
+//        JSON.parse(
+//            '[{"PID": "00000001","state":"0","brand": "Blueberry","model": "iPhone X","year": "2017-11-03","color": "navy red","use_time": "0.2","price": "832.14","image": "1"},{"PID": "00000002","brand": "Sony","model": "iPhone X","year": "2017-11-03","color": "black","use_time": "0.2","price": "832.14","image": "1"}]'
+//        )
+//    );
 }
 
 // fill table and filter
@@ -43,12 +47,19 @@ function deleteItem(e) {
     var formData = getRow(e.target);
     formData.append("userName", userName);
     displayFormData(formData);
-    ajax(
-        "POST",
-        "delete_" + selectedTab + ".php",
-        formData,
-        () => e.target.parentNode.remove() // remove clicked row
-    );
+    var sellerID = formData.get("sellerID");
+    if (sellerID != userID){
+        
+        alert("You do not have the authority to do this...");
+    }
+    else{
+        ajax(
+            "POST",
+            "delete_" + selectedTab + ".php",
+            formData,
+            () => e.target.parentNode.remove() // remove clicked row
+        );
+    }
 }
 
 // update an item
@@ -56,7 +67,18 @@ function updataItem(e) {
     var formData = getRow(e.target);
     formData.append("userName", userName);
     displayFormData(formData);
-    ajax("POST", "update_" + selectedTab + ".php", formData);
+    var sellerID = formData.get("sellerID");
+    var userid = formData.get("userID");
+    if(sellerID != userID && userid != userID){
+        alert("You do not have the authority to do this...");
+	load("product");
+    }
+    else if(userid == userID){
+        ajax("POST", "update_user.php", formData);
+    }
+    else{
+        ajax("POST", "update_" + selectedTab + ".php", formData);
+    }
 }
 
 // add an Item

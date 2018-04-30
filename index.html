@@ -1,75 +1,41 @@
 <!DOCTYPE html>
-
-<html>
-	<head>
-
-		<title>UR Second-hand Electronic Product</title>	
-
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script type="text/javascript" src="js/login.js"></script>
-
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-
-	</head>
-
-	<body>
-		
-		<div class="rightside">
-
-			<div class="tab-content">
-
-				<div id="signup">
-
-					<div class="header"> Save your account NOW </div>
-
-					<form class="form" action="./php/signup.php" method="post">
-						
-						<!-- <p class="pheader">User Name</p> -->
-						<input type="text" name="user" value="User Name" 
-								onfocus="clearName(this)" 
-								onblur="judgeName(this)">
-						<!-- <p class="pheader">Email</p> -->
-						<input type="text" name="email" value="Email@address.com" 
-								onfocus="clearEmail(this)" 
-								onblur="judgeEmail(this)">
-						<!-- <p class="pheader">Password</p> -->
-						<input type="text" name="password" value="Password" id="password" 
-								onfocus="clearPW(this)"
-								onblur="judgePW(this)">
-						<input type="text" name="passwordagain" value="Confirm Password" 
-								onfocus="clearPWA(this)" 
-								onblur="judgePWA(this)">
-						<input type="submit" class="register" value="Register">
-
-					</form>
-
-					<div class="tail">Already have an account?&nbsp;&nbsp;<a id="loginlink">Login</a></div>
-				</div>
-
-				<div id="login">
-
-					<div class="header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome Back! </div>
-
-					<form class="form" action="./php/login.php" method="post">
-						<input type="text" name="user" value="User Name"
-								onfocus="clearloginName(this)"
-								onblur="showdefaultValue(this)">
-						<input type="text" name="password" value="Password"
-								onfocus="clearloginPW(this)"
-								onblur="showdefaultValue(this)">
-						<input type="submit" class="login" value="Login">
-					</form>
-
-					<div class="tail">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Want to join us?&nbsp;&nbsp;
-						<a id="signuplink" >Sign up</a>
-					</div>
-
-				</div>
-
-			</div>
-			
-
-		</div>
-
-	</body>
+<html lang="en">
+    <head>
+        <title>Welcome</title>
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="left">
+            <div class="logo"></div>
+            <div class="user" onclick = "load('user')">
+                <span class="helper"></span><img src="img/user.png"/>
+            </div>
+            <div class='product selected' onclick="load('product')"></div>
+            <!-- <div class='user' onclick="load('user')"></div> -->
+            <div class='order' onclick="load('order')"></div>
+            <div class='order-detail' onclick="load('order-detail')"></div>
+            <div class='rating' onclick="load('rating')"></div>
+            <div class='cart' onclick="load('cart')"></div>
+        </div>
+        <div class="main">
+            <div class="top">
+                <div class="label">FILTER</div>
+            </div>
+            <div class="middle">
+                <form class="filter" onchange="submitFilter()"></form>
+            </div>
+        </div>
+        <div class="right">
+            <section>
+                <div class="container">
+                    <table>
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </body>
+    <script src="js/util.js"></script>
+    <script src="js/user.js"></script>
 </html>

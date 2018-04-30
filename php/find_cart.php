@@ -15,7 +15,7 @@ else{
         if($conn->query($sql)===TRUE){
 
             $sql = "SELECT * FROM Cart, User where Cart.user_cartID = User.userID  ";
-            if($userName){$sql .=" AND User.userName= $userName";}
+            if($userName){$sql .=" AND User.userName= '$userName'";}
             if($user_cartID){$sql .= " AND Cart.user_cartID = $user_cartID";}
             if($cart_PID){$sql .= " AND Cart.cart_PID = $cart_PID";}
 
@@ -47,8 +47,8 @@ else{
         else {
             $arr = array();
             $myobj = array(
-                    user_cartID => NULL,
-                    cart_PID => NULL
+                    user_cartID => "not found",
+                    cart_PID => "not found"
                 );
                 $arr[] = $myobj; 
             $myJSON = json_encode($arr);

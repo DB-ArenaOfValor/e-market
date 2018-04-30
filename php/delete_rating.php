@@ -19,4 +19,5 @@ else{
 		echo "Error database:".mysql_error();
 	}
 }
+$conn->close();
 ?>

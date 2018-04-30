@@ -18,10 +18,10 @@ else{
         $image = $_POST['image'];
         $sell_time = $_POST['sell_time'];
         $sellerID = $_POST['sellerID'];
-        $userName = $_POST['userName'];
+       // $userName = $_POST['userName'];
 
         $sql = "SELECT * FROM Product, User where Product.sellerID = User.userID"; 
-        if($userName) {$sql .= " AND User.userName = '$userName'";}
+       // if($userName) {$sql .= " AND User.userName = '$userName'";}
         if($PID) {$sql .= " AND Product.PID = '$PID'";}
         if($brand) {$sql .= " AND Product.brand = '$brand'";}
         if($model) {$sql .= " AND Product.model = '$model'";}
@@ -63,23 +63,24 @@ else{
             echo $myJSON;
         }
         else {
+	    // echo "0 result";
             $arr = array();
             $myobj = array(
-                    PID => NULL,
-                    brand => NULL,
-                    model => NULL,
-                    year => NULL,
-                    color => NULL,
-                    use_time => NULL,
-                    price => NULL,
-                    state => NULL,
-                    image => NULL,
-                    sell_time => NULL,
-                    sellerID => NULL
+                    PID => "not found",
+                    brand => "not found",
+                    model => "not found",
+                    year => "not found",
+                    color => "not found",
+                    use_time => "not found",
+                    price => "not found",
+                    state => "not found",
+                    image => "not found",
+                    sell_time => "not found",
+                    sellerID => "not found"
                 );
                 
                 // Add into a json file
-                $arr[] = $myobj;
+            $arr[] = $myobj;
             $myJSON = json_encode($arr);
             echo $myJSON;
         }

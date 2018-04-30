@@ -27,7 +27,7 @@ else{
 					$conn->query($query3);
 					setcookie("userName", $userName);
 					setcookie("password", $password);
-					header("location: ../user.html");
+					header("location: ../user.html?/userName=$userName");
 				}
 				else{
 					echo "Wrong user ID";
@@ -42,4 +42,5 @@ else{
 		echo "Error using database:".mysql_error();
 	}
 }
+$conn->close();
 ?>

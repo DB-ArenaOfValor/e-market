@@ -10,7 +10,7 @@ else{
 // Get rating info
 $ratingID = $_POST['ratingID'];
 $buyerID = $_POST['buyerID'];
-$sellerID = $_POST['sellerID'];
+$rating = $_POST['rating'];
 $PR_PID = $_POST['PR_PID'];
 $rating_time = $_POST['rating_time'];
 
@@ -21,8 +21,8 @@ if($buyerID){
     $sql = "update Rating set buyerID ='$buyerID' where ratingID = '$ratingID';";
     $conn->query($sql);
 }
-if($sellerID){
-    $sql = "update Rating set sellerID ='$sellerID' where ratingID = '$ratingID';";
+if($rating){
+    $sql = "update Rating set rating ='$rating' where ratingID = '$ratingID';";
     $conn->query($sql);
 }
 if($PR_PID){
