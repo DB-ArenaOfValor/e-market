@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>hello world</title>
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="left">
+            <div class="logo"></div>
+            <div class="avatar">
+                <span class="helper"></span><img src="img/user.png"/>
+            </div>
+            <div class='product selected' onclick="load('product')"></div>
+            <div class='user' onclick="load('user')"></div>
+            <div class='order' onclick="load('order')"></div>
+            <div class='order-detail' onclick="load('order-detail')"></div>
+            <div class='rating' onclick="load('rating')"></div>
+            <div class='cart' onclick="load('cart')"></div>
+        </div>
+        <div class="main">
+            <div class="top">
+                <div class="label">FILTER</div>
+            </div>
+            <div class="middle">
+                <form class="filter" onchange="submitFilter()"></form>
+            </div>
+        </div>
+        <div class="right">
+            <section>
+                <div class="container">
+                    <table>
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </body>
+    <script src="js/util.js"></script>
+    <script src="js/admin.js"></script>
+</html>
