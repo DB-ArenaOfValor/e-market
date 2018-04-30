@@ -38,11 +38,14 @@ function deleteItem(e) {
         getRow(e.target),
         () => e.target.parentNode.remove() // remove clicked row
     );
+    alert("Delete successfully!");
 }
 
 // update an item
 function updataItem(e) {
-    ajax("POST", "update_" + selectedTab + ".php", getRow(e.target));
+    ajax("POST", "update_" + selectedTab + ".php", getRow(e.target), () =>
+        alert("Update sccessfully!")
+    );
 }
 
 function addItem(e) {

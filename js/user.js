@@ -18,14 +18,14 @@ function load(tab) {
     formData.append("userName", userName);
     formData.append("userID", userID);
     displayFormData(formData);
-    ajax("POST", "find_" + tab + ".php", formData, fill);       
+    ajax("POST", "find_" + tab + ".php", formData, fill);
     // }
     //////////////////////////////// for test
-//    fill(
-//        JSON.parse(
-//            '[{"PID": "00000001","state":"0","brand": "Blueberry","model": "iPhone X","year": "2017-11-03","color": "navy red","use_time": "0.2","price": "832.14","image": "1"},{"PID": "00000002","brand": "Sony","model": "iPhone X","year": "2017-11-03","color": "black","use_time": "0.2","price": "832.14","image": "1"}]'
-//        )
-//    );
+    //    fill(
+    //        JSON.parse(
+    //            '[{"PID": "00000001","state":"0","brand": "Blueberry","model": "iPhone X","year": "2017-11-03","color": "navy red","use_time": "0.2","price": "832.14","image": "1"},{"PID": "00000002","brand": "Sony","model": "iPhone X","year": "2017-11-03","color": "black","use_time": "0.2","price": "832.14","image": "1"}]'
+    //        )
+    //    );
 }
 
 // fill table and filter
@@ -48,17 +48,16 @@ function deleteItem(e) {
     formData.append("userName", userName);
     displayFormData(formData);
     var sellerID = formData.get("sellerID");
-    if (sellerID != userID){
-        
+    if (sellerID != userID) {
         alert("You do not have the authority to do this...");
-    }
-    else{
+    } else {
         ajax(
             "POST",
             "delete_" + selectedTab + ".php",
             formData,
             () => e.target.parentNode.remove() // remove clicked row
         );
+        alert("Delete successfully!");
     }
 }
 
@@ -69,15 +68,17 @@ function updataItem(e) {
     displayFormData(formData);
     var sellerID = formData.get("sellerID");
     var userid = formData.get("userID");
-    if(sellerID != userID && userid != userID){
+    if (sellerID != userID && userid != userID) {
         alert("You do not have the authority to do this...");
-	load("product");
-    }
-    else if(userid == userID){
-        ajax("POST", "update_user.php", formData);
-    }
-    else{
-        ajax("POST", "update_" + selectedTab + ".php", formData);
+        load("product");
+    } else if (userid == userID) {
+        ajax("POST", "update_user.php", formData, () =>
+            alert("Update sccessfully!")
+        );
+    } else {
+        ajax("POST", "update_" + selectedTab + ".php", formData, () =>
+            alert("Update sccessfully!")
+        );
     }
 }
 
