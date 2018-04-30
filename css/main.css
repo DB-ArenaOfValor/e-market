@@ -80,6 +80,10 @@ ul {
     background-image: url("../img/cart-white.png");
 }
 
+.left .logout {
+    background-image: url("../img/logout.png");
+}
+
 .main {
     background-color: #F9F9F9;
     height: 100%;
