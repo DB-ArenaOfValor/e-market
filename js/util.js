@@ -23,7 +23,7 @@ function ajax(method, url, data, callback) {
                 callback && callback(JSON.parse(this.responseText));
             } else callback && callback();
             return this.responseText;
-        } else if (this.readyState == 4) {
+        } else {
             console.log(this);
         }
     };
